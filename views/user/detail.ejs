@@ -1,0 +1,627 @@
+<div id="compte">
+    <div id="nav-user">
+        <h2>Bienvenue</h2>
+        <a href="/compte">
+            <i class="fa-solid fa-user"></i>
+            <span class="txt">Compte</span>
+        </a>
+        <a href="/compte/property" class="user-currenta">
+            <i class="fa-solid fa-house"></i>
+            <span class="txt">Mes biens</span>
+        </a>
+        <a href="/compte/ajout">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="txt">Ajouter un bien</span>
+        </a>
+        <a href="/compte/documents" style="position: relative;">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="txt">Documents</span>
+            
+        </a>
+        <a href="/compte/messages" style="position: relative;">
+            <i class="fa-solid fa-comments"></i>
+            <span class="txt">Messages</span>
+            <span class="not-msg"></span>
+        </a>
+        <a href="/compte/demandes" style="position: relative;">
+            <i class="fa-solid fa-bell"></i>
+            <span class="txt">Demandes reçues</span>
+            <span class="not-msg" style="left: 90%;"></span>
+        </a>
+    </div>
+
+    <div id="content-user">
+        <h2 class="title"> <i class="fa-solid fa-circle-user" style="margin-right: 20px;"></i>Propriétés, Détail</h2>
+
+        <div id="detail-mproperty">
+            <h2>Detail : <%= id  %></h2>
+            <p><strong>Catégorie: </strong><%= bien.category  %></p>
+            <p><strong>Année: </strong><%= bien.annee  %></p>
+            <p><strong>Adresse: </strong><%= bien.location  %></p>
+            <p><strong>Etat: </strong><%= bien.etat  %></p>
+            <p>
+                <strong>Prix: </strong>
+                
+            </p>
+
+            <div class="container-img">
+
+                <% bien.imgs.forEach((img, index)=>{
+                    var im = img.split('\\').slice(1, )
+                    im = im.join('/')    
+                %>
+
+                    <a data-fancybox="gallery" href="/<%= im %>"><img src="/<%= im %>" alt="Image <%= index %>" /></a>
+                <% }) %>
+                
+            </div>
+
+            <hr>
+            <p>Certains documents doivent être soumis lors d'un échange...</p>
+
+            <div id="form_document">
+               
+                <form class="field" enctype="multipart/form-data" id="acte_prop_field">                    
+                    
+                    <% if(docs.acte_prop == ""){  %>
+                        <label for="acte_prop"><i class="fa-solid fa-upload"></i> Acte de propriété*</label>
+                        <section>                            
+                            <input type="file" name="file" id="acte_prop" required>
+                            <input type="hidden" name="field" value="acte_prop" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+                            <button type="submit" class="doc_to">Charger</button>
+                        </section>
+                        
+                    <% } else { %>
+                        <label for="acte_prop" class="label-disabled"><i class="fa-solid fa-upload"></i> Acte de propriété*</label>
+                        <section>
+                            
+                            <a href="/<%= docs.acte_prop %>" download>Voir le document</a>
+                            <div class="doc_control" id="acte_prop_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'acte_prop')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div> 
+                            
+                        </section>
+
+                    <% } %>
+                </form>
+
+             
+                <form class="field" id="piece_id_field" enctype="multipart/form-data">
+                    
+                    <% if(docs.piece_id == ""){  %>
+                        <label for="piece_id"><i class="fa-solid fa-upload"></i> Pièce d'identité</label>
+                        <section>
+                            <input type="file" name="file" id="piece_id" required>
+                            <input type="hidden" name="field" value="piece_id" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+                    <% } else { %>
+                        <label for="piece_id" class="label-disabled"><i class="fa-solid fa-upload"></i> Pièce d'identité</label>
+                        <section>
+                            <a href="/<%= docs.piece_id %>" download>Voir le document</a>
+                            <div class="doc_control" id="piece_id_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'piece_id')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>
+                        
+                        </section>
+                    <% } %>
+
+                  
+                    
+                </form>
+
+                <h3> Diagnostique immobilier * :</h3>
+                <form class="field" enctype="multipart/form-data" id="diagnostique_p_energetique_field">
+                    
+                    <% if(docs.diagnostique_p_energetique == ""){  %>                                           
+                        <label for="diagnostique_p_energetique"><i class="fa-solid fa-upload"></i>
+                            Diagnostique de performance énergétique (DPE):
+                        </label>
+                        <section>
+                            <input type="hidden" name="field" value="diagnostique_p_energetique" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="diagnostique_p_energetique" id="diagnostique_p_energetique" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+
+                    <% } else { %>
+                        <label for="diagnostique_p_energetique" class="label-disabled"><i class="fa-solid fa-upload"></i>
+                            Diagnostique de performance énergétique (DPE):
+                        </label>
+                        <section>
+                        
+                            <a href="/<%= docs.diagnostique_p_energetique %>" download>Voir le document</a>
+                            <div class="doc_control" id="diagnostique_p_energetique_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'diagnostique_p_energetique')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+                    
+                </form>
+
+
+
+                <form class="field" enctype="multipart/form-data" id="diagnostique_amiante_field">
+                    
+                    <% if(docs.diagnostique_amiante == ""){  %>                    
+                        <label for="diagnostique_amiante"><i class="fa-solid fa-upload"></i>
+                            Diagnostique amiante (si la maison a été construite avant 1997):
+                        </label>
+                        <section>
+                            <input type="hidden" name="field" value="diagnostique_amiante" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="diagnostique_amiante" id="diagnostique_amiante" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+
+                    <% } else { %>
+                        <label for="diagnostique_amiante" class="label-disabled"><i class="fa-solid fa-upload"></i>
+                            Diagnostique amiante (si la maison a été construite avant 1997):
+                        </label>
+                        <section>
+                            <a href="/<%= docs.diagnostique_amiante %>" download>Voir le document</a>
+                            <div class="doc_control" id="diagnostique_amiante_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'diagnostique_amiante')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+                    
+                </form>
+
+
+
+                <form class="field" enctype="multipart/form-data" id="diagnostique_plomb_field">
+                    
+                    <% if(docs.diagnostique_plomb == ""){  %>                    
+                        <label for="diagnostique_plomb"><i class="fa-solid fa-upload"></i>
+                            Diagnostique plomb (si la maison a été construite avant 1949):
+                        </label>
+
+                        <section>
+                            <input type="hidden" name="field" value="diagnostique_plomb" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="diagnostique_plomb" id="diagnostique_plomb" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                            
+                        </section>
+
+                    <% } else { %>
+                        <label for="diagnostique_plomb" class="label-disabled"><i class="fa-solid fa-upload"></i>
+                            Diagnostique plomb (si la maison a été construite avant 1949):
+                        </label>
+                        <section>
+                            <a href="/<%= docs.diagnostique_plomb %>" download>Voir le document</a>
+                            <div class="doc_control" id="diagnostique_plomb_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'diagnostique_plomb')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+                    
+                </form>
+
+                <form class="field" enctype="multipart/form-data" id="diagnostique_termite_field">
+                    
+                    <% if(docs.diagnostique_termite == ""){  %>                    
+                        <label for="diagnostique_termite"><i class="fa-solid fa-upload"></i>
+                            Diagnostique Termite 
+                        </label>
+                        <section>
+                            <input type="hidden" name="field" value="diagnostique_termite" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="diagnostique_termite" id="diagnostique_termite" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+
+                    <% } else { %>
+                        <label for="diagnostique_termite" class="label-disabled"><i class="fa-solid fa-upload"></i>
+                            Diagnostique Termite 
+                        </label>
+                        <section>
+                            <a href="/<%= docs.diagnostique_termite %>" download>Voir le document</a>
+                            <div class="doc_control" id="diagnostique_termite_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'diagnostique_termite')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+                    
+                </form>
+
+
+
+
+                <form class="field" enctype="multipart/form-data" id="diagnostique_gaz_field">
+                   
+                    <% if(docs.diagnostique_gaz == ""){  %>                    
+
+                        <label for="diagnostique_gaz"><i class="fa-solid fa-upload"></i>
+                            Diagnostique gaz et électricité (si les installations ont plus de 15 ans)
+                        </label>
+
+                        <section>
+                            <input type="hidden" name="field" value="diagnostique_gaz" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="diagnostique_gaz" id="diagnostique_gaz" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+
+                    <% } else { %>
+                         <label for="diagnostique_gaz" class="label-disabled"><i class="fa-solid fa-upload"></i>
+                            Diagnostique gaz et électricité (si les installations ont plus de 15 ans)
+                        </label>
+                
+                        <section>
+                            
+                            <a href="/<%= docs.diagnostique_gaz %>" download>Voir le document</a>
+                            <div class="doc_control" id="diagnostique_gaz_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'diagnostique_gaz')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+                    
+                </form>
+                
+
+
+
+
+                <form class="field" enctype="multipart/form-data" id="taxe_fonciere_field">
+
+                    <% if(docs.taxe_fonciere == ""){  %>                    
+
+                        <label for="taxe_fonciere"><i class="fa-solid fa-upload"></i> Dernière taxe foncière * :</label>
+                        <p>Relevé de la dernière taxe foncière payée.</p>
+                        <section>
+                            
+                            <input type="hidden" name="field" value="taxe_fonciere" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="taxe_fonciere" id="taxe_fonciere" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+
+                    <% } else { %>
+                        <label for="taxe_fonciere" class="label-disabled"><i class="fa-solid fa-upload"></i> Dernière taxe foncière * :</label>
+                        <p>Relevé de la dernière taxe foncière payée.</p>
+                        <section>                            
+                            <a href="/<%= docs.taxe_fonciere %>" download>Voir le document</a>
+                            <div class="doc_control" id="taxe_fonciere_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'taxe_fonciere')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+
+                </form>
+
+                
+
+                <form class="field" enctype="multipart/form-data" id="plan_cadastral_field">
+
+                    <% if(docs.plan_cadastral == ""){  %>                    
+
+                        <label for="plan_cadastral"><i class="fa-solid fa-upload"></i> Plan cadastral*:</label>
+                        <p>Plan indiquant les limites exactes de la propriété</p>
+                        <section>
+                            
+                            <input type="hidden" name="field" value="plan_cadastral" class="field-doc">
+                            <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                            <input type="file" name="plan_cadastral" id="plan_cadastral" required>
+                            <button type="submit" class="doc_to">Charger</button>    
+                        </section>
+
+                    <% } else { %>
+                        <label for="plan_cadastral" class="label-disabled"><i class="fa-solid fa-upload"></i> Plan cadastral*:</label>
+                        <p>Plan indiquant les limites exactes de la propriété</p>
+                        <section>
+                            
+                            <a href="/<%= docs.plan_cadastral %>" download>Voir le document</a>
+                            <div class="doc_control" id="plan_cadastral_trash">                        
+                                <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'plan_cadastral')"><i class="fa-solid fa-trash"></i></button>                        
+                            </div>    
+                        </section>
+                    <% } %>
+
+                </form>
+                
+
+
+
+                <form class="field" enctype="multipart/form-data" id="historique_travaux_field">
+
+                <% if(docs.historique_travaux == ""){  %>                    
+
+                    <label for="historique_travaux"><i class="fa-solid fa-upload"></i> Historique des travaux * :</label>
+                    <section>
+                        
+                        <input type="hidden" name="field" value="historique_travaux" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="historique_travaux" id="historique_travaux" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="historique_travaux" class="label-disabled"><i class="fa-solid fa-upload"></i> Historique des travaux * :</label>
+                    <section>                        
+
+                        <a href="/<%= docs.historique_travaux %>" download>Voir le document</a>
+                        <div class="doc_control" id="historique_travaux_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'historique_travaux')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+
+
+
+
+
+                <form class="field" enctype="multipart/form-data" id="attestation_absence_field">
+
+                <% if(docs.attestation_absence == ""){  %>                    
+
+                    <label for="attestation_absence"><i class="fa-solid fa-upload"></i> Attestation d'absence d'hypothèque ou mainlevée * :</label>
+                    <p>Document prouvant que la maison n'est pas grevée d'une hypothèque ou qu'elle a été levée</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="attestation_absence" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="attestation_absence" id="attestation_absence" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="attestation_absence" class="label-disabled"><i class="fa-solid fa-upload"></i> Attestation d'absence d'hypothèque ou mainlevée * :</label>
+                    <p>Document prouvant que la maison n'est pas grevée d'une hypothèque ou qu'elle a été levée</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.attestation_absence %>" download>Voir le document</a>
+                        <div class="doc_control" id="attestation_absence_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'attestation_absence')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+
+
+    
+                <form class="field" enctype="multipart/form-data" id="permis_construire_field">
+
+                <% if(docs.permis_construire == ""){  %>                    
+
+                    <label for="permis_construire"><i class="fa-solid fa-upload"></i> Permis de construire (si applicable) :</label>
+                    <p>Si des travaux de construction ont été effectués, fournir le permis de 
+                        construire et les attestations de conformité.</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="permis_construire" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="permis_construire" id="permis_construire" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="permis_construire" class="label-disabled"><i class="fa-solid fa-upload"></i> 
+                        Permis de construire (si applicable) :</label>
+                        <p>Si des travaux de construction ont été effectués, fournir le permis de 
+                            construire et les attestations de conformité.</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.permis_construire %>" download>Voir le document</a>
+                        <div class="doc_control" id="permis_construire_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'permis_construire')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+             
+                
+
+                <h2>Pour les copropriété :</h2>
+
+
+                <form class="field" enctype="multipart/form-data" id="reglement_copropriete_field">
+
+                <% if(docs.reglement_copropriete == ""){  %>                    
+
+                    <label for="reglement_copropriete"><i class="fa-solid fa-upload"></i> Règlement de copropriété * :</label>
+
+                    <p> Document expliquant les règles et règlements de la copropriété.</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="reglement_copropriete" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="reglement_copropriete" id="reglement_copropriete" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="reglement_copropriete" class="label-disabled"><i class="fa-solid fa-upload"></i> Règlement de copropriété * :</label>
+                       
+                    <p> Document expliquant les règles et règlements de la copropriété.</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.reglement_copropriete %>" download>Voir le document</a>
+                        <div class="doc_control" id="reglement_copropriete_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'reglement_copropriete')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+
+
+                <form class="field" enctype="multipart/form-data" id="etat_descriptif_division_field">
+                <% if(docs.etat_descriptif_division == ""){  %>                    
+
+                    <label for="etat_descriptif_division"><i class="fa-solid fa-upload"></i> État descriptif de division * :</label>
+
+                    <p>Décrit la répartition des parties communes et privatives dans l'immeuble.</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="etat_descriptif_division" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="etat_descriptif_division" id="etat_descriptif_division" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="etat_descriptif_division" class="label-disabled"><i class="fa-solid fa-upload"></i> État descriptif de division * :</label>
+                       
+                    <p>Décrit la répartition des parties communes et privatives dans l'immeuble.</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.etat_descriptif_division %>" download>Voir le document</a>
+                        <div class="doc_control" id="etat_descriptif_division_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'etat_descriptif_division')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+        
+
+
+
+                <form class="field" enctype="multipart/form-data" id="etat_charge_copropriete_field">
+                <% if(docs.etat_charge_copropriete == ""){  %>                    
+
+                    <label for="etat_charge_copropriete"><i class="fa-solid fa-upload"></i> État des charges de copropriété *  :</label>
+
+                    <p>Détail des charges payées pour l'année en cours et les prévisions pour l'année suivante.</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="etat_charge_copropriete" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="etat_charge_copropriete" id="etat_charge_copropriete" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="etat_charge_copropriete" class="label-disabled"><i class="fa-solid fa-upload"></i> État des charges de copropriété *  :</label>
+                       
+                    <p>Détail des charges payées pour l'année en cours et les prévisions pour l'année suivante.</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.etat_charge_copropriete %>" download>Voir le document</a>
+                        <div class="doc_control" id="etat_charge_copropriete_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'etat_charge_copropriete')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+                           
+
+
+                <form class="field" enctype="multipart/form-data" id="appel_fond_field">
+                <% if(docs.appel_fond == ""){  %>                    
+
+                    <label for="appel_fond"><i class="fa-solid fa-upload"></i>Appels de fonds * :</label>
+
+                    <p> Documents relatifs aux appels de fonds (sous forme de relevés) pour les charges courantes et travaux.</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="appel_fond" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="appel_fond" id="appel_fond" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="appel_fond" class="label-disabled"><i class="fa-solid fa-upload"></i>Appels de fonds * :</label>
+                       
+                    <p> Documents relatifs aux appels de fonds (sous forme de relevés) pour les charges courantes et travaux.</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.appel_fond %>" download>Voir le document</a>
+                        <div class="doc_control" id="appel_fond_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'appel_fond')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+
+
+
+                <form class="field" enctype="multipart/form-data" id="proces_assemblee_field">
+                <% if(docs.proces_assemblee == ""){  %>                    
+
+                    <label for="proces_assemblee"><i class="fa-solid fa-upload"></i>Procès-verbaux des assemblées générales *:</label>
+
+                   <p>Copies des comptes rendus des trois dernières assemblées générales de copropriété.</p>
+                    <section>                        
+                        <input type="hidden" name="field" value="proces_assemblee" class="field-doc">
+                        <input type="hidden" name="bienId" value="<%= docs.bienId %>" class="_bienId">
+
+                        <input type="file" name="proces_assemblee" id="proces_assemblee" required>
+                        <button type="submit" class="doc_to">Charger</button>    
+                    </section>
+
+                <% } else { %>
+                    <label for="proces_assemblee" class="label-disabled"><i class="fa-solid fa-upload"></i>Procès-verbaux des assemblées générales *:</label>
+                       
+                   <p>Copies des comptes rendus des trois dernières assemblées générales de copropriété.</p>
+                    <section>                        
+                        
+                        <a href="/<%= docs.proces_assemblee %>" download>Voir le document</a>
+                        <div class="doc_control" id="proces_assemblee_trash">                        
+                            <button class="doc_trash" type="button" onclick="DeleteDocBien('<%= bien._id %>', 'proces_assemblee')"><i class="fa-solid fa-trash"></i></button>                        
+                        </div>    
+                    </section>
+                <% } %>
+
+                </form>
+
+
+            </div>
+
+
+            <button class="btn" id="removebien" onclick="RemoveBien('66de0eff061694162078923d')">X Supprimer ce bien</button>
+            <div class="success">Suppression réussie. redirection en cours..</div>
+        </div>
+        
+    </div>
+</div>
+
+
+<script>
+    function RemoveBien(id){
+        $('#removebien').text('X Suppression en cours..').css('opacity', "0.5")
+        $.ajax({
+            type:'POST',
+            url:'/remove-bien',
+            data:{id},
+            success:(res)=>{
+                $(".success").slideDown()
+                $('#removebien').text('X Suppression terminé').css('opacity', "1").off()
+
+                setTimeout(() => {
+                    window.location.href="/compte/property"                    
+                }, 2000);
+            }
+        })
+    }
+    var id = '<%= docs.piece_id %>'
+    console.log(id == "")
+</script>
+
+
+<script src="/js/docs.js"></script>

@@ -1,0 +1,31 @@
+<form id="login-admin-form">
+    <h3>SwapHome Administration</h3>
+    
+    <div>
+        <p>
+            <i class="fa-solid fa-user-secret"></i> Username 
+        </p>
+        <input type="text" placeholder="Admin..." required class="username">
+    </div>
+    <div>
+        <p>
+            <i class="fa-solid fa-lock"></i> Password 
+        </p>
+        
+        <input type="password" placeholder="Secret..." required class="password">
+    </div>
+    
+    <button type="submit" style="position: relative;" >Submit  
+        <div class="animation">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </button>
+    <div class="success">
+        Identification réussie, redirection en cours...
+    </div>
+    <div class="err">
+        Erreur d'identification.
+    </div>
+</form>
+
+<script src="/js/login-admin.js"></script>

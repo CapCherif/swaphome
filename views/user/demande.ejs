@@ -1,0 +1,16 @@
+
+<div>
+    <h2>Demande reçues.</h2>
+    <p>Ci-dessous seront listés vos demandes</p>
+    <% exchanges.forEach((exchange)=>{ %>
+
+        <div class="exchange">
+            <h2><a href="/compte/demandes/detail?id=<%= exchange.idBienDemandeur %>&ide=<%= exchange._id  %>"> >> <%= exchange.locationDemandeur  %></a></h2>
+        </div>
+
+    <% }) %>
+</div>
+
+    
+
+

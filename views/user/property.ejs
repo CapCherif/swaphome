@@ -1,0 +1,68 @@
+<div id="compte">
+    <div id="nav-user">
+        <h2>Bienvenue</h2>
+        <a href="/compte">
+            <i class="fa-solid fa-user"></i>
+            <span class="txt">Compte</span>
+        </a>
+        <a href="/compte/property" class="user-currenta">
+            <i class="fa-solid fa-house"></i>
+            <span class="txt">Mes biens</span>
+        </a>
+        <a href="/compte/ajout">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="txt">Ajouter un bien</span>
+        </a>
+        <a href="/compte/documents" style="position: relative;">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="txt">Documents</span>
+            
+        </a>
+        <a href="/compte/messages" style="position: relative;">
+            <i class="fa-solid fa-comments"></i>
+            <span class="txt">Messages</span>
+            <span class="not-msg"></span>
+        </a>
+        <a href="/compte/demandes" style="position: relative;">
+            <i class="fa-solid fa-bell"></i>
+            <span class="txt">Demandes reçues</span>
+            <span class="not-msg" style="left: 90%;"></span>
+        </a>
+    </div>
+
+    <div id="content-user">
+        <h2 class="title"> <i class="fa-solid fa-house" style="margin-right: 20px;"></i>Propriétés</h2>
+
+
+        <div id="my-properties">
+            <% properties.forEach((property)=> { %>
+                <div class="my-property">
+                    <div class="prop-container">
+                        
+                    </div>
+                    <div>
+                        <h4><%= property.category  %></h4>
+                        <small><%= property.location  %></small>
+                        <div>
+                            <a href="/compte/property/detail?id=<%= property._id  %>">Consulter</a>                        
+                        </div>
+                    </div>
+    
+                </div>
+
+            <% }) %>
+
+            <% if(properties.length == 0){ %>
+                <p>Aucun bien trouvé.</p>
+            <% } %>
+            
+            
+        </div>
+        
+    </div>
+</div>
+
+
+<script>
+    $('.prop-container').css({'background-image':'url("/imgs/villa1.jpg")', "background-position":"center", "background-cover":"cover"})
+</script>

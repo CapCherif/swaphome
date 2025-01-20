@@ -1,0 +1,55 @@
+
+
+
+    <h2 class="title"> <i class="fa-solid fa-comments" style="margin-right: 20px;"></i>Chat</h2>
+
+    <div id="app-chat">
+
+        <div class="prop-container">
+                        
+        </div>
+
+
+        <div id="chat-msg">
+
+            
+            
+        </div>
+
+        <div id="endb"></div>
+
+        <form id="form-chat">
+            <textarea name="" id="" required></textarea>
+
+            <button type="submit">
+        
+                <span style="position: relative;">Envoyer
+                    <div class="animation" style="left:-45%">
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                </span>
+            </button>
+
+
+        </form>
+
+    </div>
+    
+
+
+
+
+    <script>
+        $('.prop-container').css({'background-image':'url("/imgs/villa1.jpg")', "background-position":"center", "background-cover":"cover"})
+    </script>
+
+<script>
+    var idUser = '<%= _id %>'
+    var idBien = '<%= idBien %>'
+    var fullname = '<%= fullNameClient %>'
+    var idClient = '<%= idClient %>'
+    var idProprietaire = '<%= idProprietaire %>'
+</script>
+<script src="/js/user-chat.js">
+
+</script>

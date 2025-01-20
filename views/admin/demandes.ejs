@@ -1,0 +1,15 @@
+<h2>Admin - Demandes</h2>
+
+
+<div>
+    <h2>Gestion des demandes.</h2>
+   
+    <% exchanges.forEach((exchange)=>{ %>
+
+        <div class="exchange">
+            <h4><a href="/admin/biens/detail?id=<%= exchange.idBienDemandeur %>&ide=<%= exchange._id  %>"> >> Demandeur : <%= exchange.locationDemandeur  %></a></h4>
+            <h4><a href="/admin/biens/detail?id=<%= exchange.idBienReceveur %>&ide=<%= exchange._id  %>"> >> Bien du receveur</a></h4>
+        </div>
+
+    <% }) %>
+</div>

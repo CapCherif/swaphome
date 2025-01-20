@@ -1,0 +1,33 @@
+
+
+<form class="signup_form" id="signin_form">
+    <h2 class="title">Identification:</h2>
+    <p>Si vous n'avez pas encore de compte, inscriver vous <a href="/signup">ici</a></p>
+    <hr>
+
+    <div class="champ">
+        <label for="">Email</label>
+        <input type="email" placeholder="YourEmail@mail.com" id="email">
+    </div>
+    
+    <div class="champ">
+        <label for="">Mot de passe</label>
+        <input type="password" placeholder="secret..." id="psw">
+    </div>
+   
+
+
+    <button type="submit" class="btn defaultb">
+        <span style="position: relative;">Connexion
+            <div class="animation" style="left:-35%">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </span>
+    </button>
+    <div class="success">Identification réussie. redirection en cours..</div>
+    <div class="err">Erreur d'identification. mot de passe ou email invalide</div>
+</form>
+
+
+<script src="/js/login.js"></script>
+

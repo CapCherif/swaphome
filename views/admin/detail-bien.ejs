@@ -1,0 +1,47 @@
+<h2>detail du bien <%= id  %></h2>
+
+
+<div id="detail-mproperty">
+    <h2>Detail : <%= id  %></h2>
+    <p><strong>Catégorie: </strong><%= bien.category  %></p>
+    <p><strong>Année: </strong><%= bien.annee  %></p>
+    <p><strong>Adresse: </strong><%= bien.location  %></p>
+    <p><strong>Etat: </strong><%= bien.etat  %></p>
+    <p>
+        <strong>Prix: </strong>
+        
+    </p>
+
+    <div class="container-img">
+
+        <% bien.imgs.forEach((img, index)=>{
+            var im = img.split('\\').slice(1, )
+            im = im.join('/')    
+        %>
+
+            <a data-fancybox="gallery" href="/<%= im %>"><img src="/<%= im %>" alt="Image <%= index %>" /></a>
+        <% }) %>
+        
+    </div>
+
+    <hr>
+    <h3>Documents : </h3>
+
+    <div id="form_document">
+       
+        <% documentEntries.forEach(function([key, value]) { %>
+        <div class="doc-bien">
+           <p>
+            <% if (value && typeof value === 'string') { %>
+            <a href="/<%= value %>" download="/<%= value %>">
+                <i class="fa-solid fa-download"></i> <%= key.replace('_', ' ') %> 
+            </a>
+            <% } else { %>
+                <small class="disabled"><i class="fa-solid fa-download"></i> <%= key.replace('_', ' ') %></small>
+            <% } %>
+            </p>
+        </div>
+        <% }) %>
+
+    </div>
+</div>

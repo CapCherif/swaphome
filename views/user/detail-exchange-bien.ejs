@@ -1,0 +1,92 @@
+
+
+
+<div id="detail-mproperty">
+    <h2>Detail :</h2>
+    <p><strong>Catégorie: </strong><%= bien.category  %></p>
+    <p><strong>Année: </strong><%= bien.annee  %></p>
+    <p><strong>Adresse: </strong><%= bien.location  %></p>
+    <p><strong>Etat: </strong><%= bien.etat  %></p>
+    <p>
+        <strong>Prix: </strong>
+        
+    </p>
+
+    <div class="container-img">
+
+        <% bien.imgs.forEach((img, index)=>{
+            var im = img.split('\\').slice(1, )
+            im = im.join('/')    
+        %>
+
+            <a data-fancybox="gallery" href="/<%= im %>"><img src="/<%= im %>" alt="Image <%= index %>" /></a>
+        <% }) %>
+        
+    </div>
+
+    <hr>
+    <h3>Documents : </h3>
+
+    <div id="form_document">
+       
+        <% documentEntries.forEach(function([key, value]) { %>
+        <div class="doc-bien">
+           <p>
+            <% if (value && typeof value === 'string') { %>
+            <a href="/<%= value %>" download="/<%= value %>">
+                <i class="fa-solid fa-download"></i> <%= key.replace('_', ' ') %> 
+            </a>
+            <% } else { %>
+                <small class="disabled"><i class="fa-solid fa-download"></i> <%= key.replace('_', ' ') %></small>
+            <% } %>
+            </p>
+        </div>
+        <% }) %>
+
+    </div>
+</div>
+
+<% if(confirmation_receveur == 0){ %>
+    <div class="flex" style="justify-content: left;">
+        <form class="accept-exchange">
+        
+            <button type="submit">Accepter l'échange</button>
+        
+        </form>
+        <form class="refuse-exchange">
+            
+            <button type="submit">x Décliner l'échange</button>
+            
+        </form>    
+        <div class="accept-succeed success">Vous venez d'accepter cette invitation, vous serez notifier de la suite, merci de patienter.</div>
+    </div>
+<% }else if(confirmation_receveur == 1){ %>
+
+    <div class="encours_confirmation">Confirmation en cours, veuillez patienter.</div>
+
+<% } %>
+
+<script>
+    var id = '<%= bien._id %>'
+    var ide = '<%= ide %>'
+
+    $('.accept-exchange').submit((e)=>{
+        e.preventDefault()
+        $('.accept-exchange button').css('opacity', "0.5").off()
+        setTimeout(() => {
+            $.ajax({
+                type:"POST",
+                url:'/compte/accept-exchange',
+                data:{id, ide},
+                success:(res)=>{
+                    $('.accept-succeed').slideDown()
+                    $('.accept-exchange button').css('opacity', "1").on().hide()
+                    $('.refuse-exchange button').css('opacity', "1").on().hide()
+                }
+            })
+        }, 500);
+         
+    })
+   
+    
+</script>

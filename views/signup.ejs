@@ -1,0 +1,59 @@
+
+
+<form class="signup_form" id="signup_form">
+    <h2 class="title">Inscription:</h2>
+    <p>Merci de remplir tout les champs</p>
+    <hr>
+
+    <div class="champ">
+        <label for="lastname">Nom</label>
+        <input type="text" placeholder="Doe.." id="lastname" required>
+    </div>
+    <div class="champ">
+        <label for="firstname">Prénom</label>
+        <input type="text" placeholder="John.." id="firstname" required>
+    </div>
+    <div class="champ">
+        <label for="email">Email</label>
+        <input type="email" placeholder="YourEmail@mail.com" id="email" required>
+    </div>
+    <div class="champ">
+        <label for="birth">Date de naissance:</label>
+        <input type="text" placeholder="jj/mm/yy" id="birth" required>
+    </div>
+    <div class="champ">
+        <label for="address">Adresse</label>
+        <input type="text" placeholder="adresse, région.." id="address" required>
+    </div>
+    <div class="champ">
+        <label for="phone">Téléphone</label>
+        <input type="text" placeholder="+3300242513...." id="phone" required>
+    </div>
+    <div class="champ">
+        <label for="psw">Mot de passe</label>
+        <input type="password" placeholder="secret..." id="psw" required>
+    </div>
+    <div class="champ">
+        <label for="cpsw">Confirmation du mot de passe</label>
+        <input type="password"  placeholder="secret..." id="cpsw" required>
+    </div>
+
+
+    <button type="submit" class="btn defaultb">
+        <span style="position: relative;">Valider mon inscription
+            <div class="animation">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </span>
+        
+    </button>
+
+    <div class="success">
+        Enregistrement réussi, veuillez patienter pendant l'activation de votre compte.
+    </div>
+    <div class="err">
+        
+    </div>
+</form>
+
+<script src="/js/signup.js"></script>

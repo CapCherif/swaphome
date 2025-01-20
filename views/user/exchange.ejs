@@ -1,0 +1,79 @@
+<form id="exchange-form">
+    <h2 class="title">Formulaire d'échange de bien</h2>
+
+    <div id="animation" style="display: block;">
+        <div class="lds-ring-violet"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <main class="after-anim" style="display: none;">
+        <h4>Localisation:</h4>
+        <p><%= bien.location  %></p>
+        <hr>
+        <h4>description:</h4>
+        <p><%= bien.description  %></p>
+        <hr>
+        <h4>Owner:</h4>
+        <!-- <p><= receveur.firstname  %> - < receveur.lastname  %></p> -->
+        <div class="champ">
+            <label for="mes-biens">Mes biens : </label>
+            <select name="mes-biens" id="mes-biens" style="width: 400px; border:1px solid lightgray; padding:10px">
+                <% mesBien.forEach(_bien => { %>
+                    <option value="bien_<%= _bien._id %>-location_<%= _bien.category %>,<%= _bien.location %>">
+                        <h4><%= _bien.category %></h4> -
+                        <small><%= _bien.location %></small>
+                    </option>    
+                <% }); %>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn defaultb" style="width: 250px;">
+            <span style="position: relative;">Envoyer ma demande
+                <div class="animation" style="left:-32%">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+            </span>
+        </button>
+
+        
+
+
+    </main>
+    <div class="canDemande" style="display: none; border: 1px solid rgb(230, 227, 173); 
+    background-color: rgb(248, 232, 158); color: rgb(40, 24, 3); padding: 20px; border-radius: 20px;
+    text-align: center;">
+        <h3>Vous ne pouvez pas effectuer cette demande</h3>
+    </div>
+
+    <div class="success">
+        Demande envoyé avec succès, merci de patienter.
+    </div>
+
+    <div class="didExist err">
+        Demande en cours de traitement...
+    </div>
+    <% if(exchangeDidExist){ %>
+    <div style="padding: 10px; background-color: rgb(218, 234, 239); font-weight: 500; border: 1px solid rgb(158, 186, 246);">
+        (<%= ex.length %>) demande(s) en cours de traitement.
+    </div>
+    <% } %>
+</form>
+
+<script>
+    var canAsk = JSON.parse('<%= canAsk %>')
+    var idb = '<%= idb %>'
+    console.log(canAsk, idb)
+    setTimeout(() => {
+        $('#animation').hide()
+        if(canAsk){
+            $('.after-anim').show()
+
+        }
+        else{
+            $('.cantDemande').show()
+        }
+    }, 1000);
+</script>
+
+<script src="/js/demande-exchange.js">
+    
+</script>

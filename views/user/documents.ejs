@@ -1,0 +1,77 @@
+<div id="compte">
+    <div id="nav-user">
+        <h2>Bienvenue</h2>
+        <a href="/compte">
+            <i class="fa-solid fa-user"></i>
+            <span class="txt">Compte</span>
+        </a>
+        <a href="/compte/property">
+            <i class="fa-solid fa-house"></i>
+            <span class="txt">Mes biens</span>
+        </a>
+        <a href="/compte/ajout">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="txt">Ajouter un bien</span>
+        </a>
+        <a href="/compte/documents" style="position: relative;" class="user-currenta">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="txt">Documents</span>
+            
+        </a>
+        <a href="/compte/messages" style="position: relative;">
+            <i class="fa-solid fa-comments"></i>
+            <span class="txt">Messages</span>
+            <span class="not-msg"></span>
+        </a>
+        <a href="/compte/demandes" style="position: relative;">
+            <i class="fa-solid fa-bell"></i>
+            <span class="txt">Demandes reçues</span>
+            <span class="not-msg" style="left: 90%;"></span>
+        </a>
+    </div>
+
+    <div id="content-user">
+        <h2 class="title"> 
+            <i class="fa-solid fa-folder-open" style="margin-right: 20px;"></i>
+            Mes documents</h2>
+
+        <div id="detail-mproperty">
+            <!-- <h2 class="completed">Profil complété</h2> -->
+            <h3>Compléter mon profil</h3>
+            <p>Ajouter certains documents nécessaires pour compléter votre profil. </p>
+            <form id="add_piece" class="form_doc">
+                <div class="champ">
+                    <label for="piece"><i class="fa-solid fa-upload"></i>Pièce d'identité (format image):</label>
+                    <input type="file" id="piece" name="piece">
+                    <small>Aucun document selectionné</small>
+                </div>
+
+                <button type="submit" class="btn defaultb lighten">Valider</button>
+            </form>
+
+
+            <form id="add_acte" class="form_doc">
+                <div class="champ">
+                    <label for="acte"> <i class="fa-solid fa-upload"></i> Acte de propriété (format pdf):</label>
+                    <input type="file" name="acte" id="acte">
+                    <small>Aucun document selectionné</small>
+                </div>
+
+                <button type="submit" class="btn defaultb lighten">Valider</button>
+            </form>
+
+            <form class="form_doc" id="add_releve">
+                
+                <div class="champ">
+                    <label for="releve"><i class="fa-solid fa-upload"></i>Revenu bancaire (format pdf):</label>
+                    <input type="file" name="releve" id="releve">
+                    <small>Aucun document selectionné</small>
+                </div>
+                
+                <button type="submit" class="btn defaultb lighten">Valider</button>
+            </form>
+          
+        </div>
+        
+    </div>
+</div>

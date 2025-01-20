@@ -1,0 +1,539 @@
+
+
+
+<div id="compte">
+    <div id="nav-user">
+        <h2>Bienvenue</h2>
+        <a href="/compte">
+            <i class="fa-solid fa-user"></i>
+            <span class="txt">Compte</span>
+        </a>
+        <a href="/compte/property">
+            <i class="fa-solid fa-house"></i>
+            <span class="txt">Mes biens</span>
+        </a>
+        <a href="/compte/ajout" class="user-currenta">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="txt">Ajouter un bien</span>
+        </a>
+        <a href="/compte/documents" style="position: relative;">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="txt">Documents</span>
+            
+        </a>
+        <a href="/compte/messages" style="position: relative;">
+            <i class="fa-solid fa-comments"></i>
+            <span class="txt">Messages</span>
+            <!-- <span class="not-msg"></span> -->
+        </a>
+        <a href="/compte/demandes" style="position: relative;">
+            <i class="fa-solid fa-bell"></i>
+            <span class="txt">Demandes reçues</span>
+            <!-- <span class="not-msg" style="left: 90%;"></span> -->
+        </a>
+    </div>
+
+    <div id="content-user">
+        <% if(!complete){ %>
+            <div class="filldoc">
+                <p><strong>Rappel:</strong> Rendez-vous à la section <a href="/compte/documents">documents</a>, pour compléter votre inscription</p>
+            </div>
+        <% } %>
+        <h2 class="title"> <i class="fa-solid fa-circle-user" style="margin-right: 20px;"></i>Ajouter un nouveau bien</h2>
+
+        <div id="steps">
+            <div class="step" id="step1">
+                <span class="num">1</span>
+            </div>
+            <div class="step lighten" id="step2">
+                <span class="trait"></span>
+                <span class="num">2</span>
+            </div>
+            <div class="step lighten" id="step3">
+                <span class="trait"></span>
+                <span class="num">3</span>
+            </div>
+        </div>
+
+        <div id="detail-mproperty">
+            <!-- <h3>Formulaire d'ajout :</h3> -->
+
+            <div id="addnewhome" class="form_user">
+                <div id="interface1">
+
+                    <p>Détails de la propriété:</p>
+                    <select  id="category" onchange="ChangeType()">
+                        <option value="maison">Maison</option>
+                        <option value="villa">Villa</option>
+                        <option value="appart">Appartement</option>
+                        <option value="loft">Loft</option>
+                        <option value="studio">Studio</option>
+                    </select>
+    
+
+                    <div class="champ appart">
+                        <label for="etage">Etage:</label>
+                        <input type="number" name="etage" id="etage">
+                    </div>
+    
+                    <div class="champ appart">
+                        <label for="n_etage">Nombre d'étage dans l'immeublee:</label>
+                        <input type="number" name="n_etage" id="n_etage">
+                    </div>
+                    <h4 class="err_etage">Champs (étage, nombre d'étage) sont requis.</h4>
+                    <div class="champ">
+                        <label for="surface">Surface habitable (m²):</label>
+                        <input type="number" id="surface">
+                    </div>
+                    
+    
+                    <div class="champ">
+                        <label for="">Nombre de pièce:</label>
+                        <input type="number" id="n_piece">
+                    </div>
+    
+                    <div class="champ">
+                        <label for="">Nombre de chambres:</label>
+                        <input type="number" id="n_chambre">
+                    </div>
+    
+                    <div class="champ">
+                        <label for="">Nombre de salle de bain:</label>
+                        <input type="number" id="n_bain">
+                    </div>
+    
+                    <div class="champ">
+                        <label for="">Année de construction :</label>
+                        <input type="number" id="annee">
+                    </div>
+    
+                    <div class="champ">
+                        <label for="">Etat du bien :</label>
+                        <select name="etat" id="etat">
+                            <option value="neuf">Neuf</option>
+                            <option value="bon_etat">Bon état</option>
+                            <option value="ancien">Ancien</option>
+                        </select>
+                    </div>
+    
+                    
+                    
+                    <div class="champ">
+                        <label for="chauffage">Type de chauffage:</label>
+                        <select name="chauffage" id="chauffage">
+                            <option value="central">Chauffage central</option>
+                            <option value="sol">Chauffage au sol</option>
+                            <option value="electric">Radiateur électrique</option>
+                        </select>
+                    </div>
+
+
+                    <div class="champ">
+                        <label for="energy">Classe énergétique :</label>
+                        <select name="energy" id="energy">
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                            <option value="f">F</option>
+                            <option value="g">G</option>
+                            <option value="vierge">Vierge</option>
+                        </select>
+                    </div>
+
+                    <div class="champ">
+                        <label for="charge">Charge de copropriété annuelle (euros) :</label>
+                        <input type="number" id="charge">
+                    </div>
+
+
+                    <div class="err_etage errchamp">Champs manquant !!</div>
+                    <button type="button" class="btn_interface" onclick="ChangeInterface('interface1', 'interface2')">Suivant</button>
+                </div>
+                
+
+                <div id="interface2" class="hide">
+                    <h3>Caractéristique de la propriété:</h3>
+                    
+                    <div>
+                        
+                        <div class="radio-group">
+                            <label for="jardin">jardin :</label>
+
+                            <input type="radio" id="jardin-oui" name="jardin" value="oui">
+                            <label for="jardin-oui">Oui</label>
+                
+                            <input type="radio" id="jardin-non" name="jardin" value="non" checked>
+                            <label for="jardin-non">Non</label>
+                        </div>
+
+                        
+                        <div class="radio-group">
+                            <label for="balcon">balcon :</label>
+                            <input type="radio" id="balcon-oui" name="balcon" value="oui">
+                            <label for="balcon-oui">Oui</label>
+
+                            <input type="radio" id="balcon-non" name="balcon" value="non" checked>
+                            <label for="balcon-non">Non</label>
+                        </div>
+
+                        <div class="radio-group">
+                            <label for="terrasse"> terrasse :</label>
+                            <input type="radio" id="terrasse-oui" name="terrasse" value="oui">
+                            <label for="terrasse-oui">Oui</label>
+
+                            <input type="radio" id="terrasse-non" name="terrasse" value="non" checked>
+                            <label for="terrasse-non">Non</label>
+                        </div>
+
+                        <div class="radio-group">
+                            <label for="piscine"> piscine :</label>
+                            <input type="radio" id="piscine-oui" name="piscine" value="oui">
+                            <label for="piscine-oui">Oui</label>
+
+                            <input type="radio" id="piscine-non" name="piscine" value="non" checked>
+                            <label for="piscine-non">Non</label>
+                        </div>
+
+                        <div class="radio-group">
+                            <label for="parking">parking :</label>
+                            <input type="radio" id="parking-oui" name="parking" value="oui">
+                            <label for="parking-oui">Oui</label>
+
+                            <input type="radio" id="parking-non" name="parking" value="non" checked>
+                            <label for="parking-non">Non</label>
+                        </div>
+
+                        <div class="radio-group">
+                            <label for="cave">cave :</label>
+                            <input type="radio" id="cave-oui" name="cave" value="oui">
+                            <label for="cave-oui">Oui</label>
+
+                            <input type="radio" id="cave-non" name="cave" value="non" checked>
+                            <label for="cave-non">Non</label>
+                        </div>
+
+                    </div>
+
+                    <div class="champ">
+                        <label for="vue">Vue :</label>
+                        <input type="text" placeholder="dégagée, montagne, mer, ville...">
+                    </div>
+                    <div class="champ">
+                        <label for="description">Description</label>
+                        <textarea  id="description"></textarea>
+                    </div>
+
+                    <div class="err_etage err_desc">Champ requis !! description obligatoire ( minimum 200 caractères)</div>
+
+                    <button type="button" class="btn_interface" onclick="ChangeInterface('interface2', 'interface1')">Précédent</button>
+                    <button type="button" class="btn_interface" onclick="ChangeInterface('interface2', 'interface3')">Suivant</button>
+  
+                </div>
+
+                <div id="interface3" class="hide">
+                    <h3>Informations supplémentaires:</h3>
+
+                    <div class="champ">     
+                        <label for="">Localisation:</label>
+                        <input type="text" placeholder="Adresse, ville..." id="location">
+                    </div>
+                    
+                    <div class="champ">
+                        <label for="file" style="cursor: pointer;">
+                            <i class="fa-solid fa-upload" style="font-size: 35px;"></i>
+                            Charger vos photos(max 5)
+                        </label>
+                        <input type="file" id="file" style="display: none;" multiple accept="image/*">
+                    </div>
+
+                    <div id="photoPreview">
+                        
+                    </div>
+
+                    <button type="button" class="btn_interface" onclick="ChangeInterface('interface3', 'interface2')">Précédent</button>
+
+                    <button type="submit" class="btn defaultb validatebtn">Valider</button>
+                </div>
+                
+                <!-- <div>
+                    <label for="price">Prix</label>
+                    <input type="number" id="price">
+                </div>
+                
+
+                <hr>
+                <h3>Document associés :</h3>
+                <p>seul les formats pdf sont accéptés.</p>
+                <div class="champ">
+                    <label for="">Charger vos document (limite 5)</label>
+                    <input type="file">
+                </div>
+                <hr>
+
+                <h3>Ajouter des images:</h3>
+                <div class="champ">
+                    <label for="">l'image principale:</label>
+                    <input type="file">
+                </div>
+
+                <div class="champ">
+                    <label for="">Associer d'autres images (maximum 10):</label>
+                    <input type="file">
+                </div> -->
+
+                <!-- <div class="filldoc" style="margin: 10px 0px;">
+                    <p><strong>Rappel:</strong> Rendez-vous à la section <a href="/compte/documents">documents</a>, pour compléter votre inscription</p>
+                </div> -->
+
+                
+
+                <div class="success">
+                    Votre demande est en cours de traitement, merci de bien vouloir patienter.
+                </div>
+                <div class="err">
+                    Erreur, merci de réessayer plus tard
+                </div>
+
+            </div> <!-- closing tag form div -->
+          
+        </div>
+        
+    </div>
+</div>
+
+
+<script>
+    function ChangeType(){
+        if($('#category').val() == "appart"){
+            $('.appart').show()
+        }
+        else{
+            $('.appart').hide()
+        }
+    }
+
+
+
+    $('#etage').on('keyup', ()=>{
+        if($('#etage').val() != ""){
+            $('.err_etage').hide()
+        }
+    })
+    $('#n_etage').on('keyup', ()=>{
+        if($('#n_etage').val() != ""){
+            $('.err_etage').hide()
+        }
+    })
+
+
+    var type, etage, n_etage, surface, n_piece, n_chambre, n_bain, annee, etat,
+        chauffage, energy, charge, carac, description;
+
+
+
+
+    function ChangeInterface(hide, show){
+        if(hide == "interface1"){
+            type = $('#category').val()
+
+            etage = $('#etage').val()
+            n_etage = $('#n_etage').val()
+            surface = $('#surface').val()
+            n_piece = $('#n_piece').val()
+            n_chambre = $('#n_chambre').val()
+            n_bain = $('#n_bain').val()
+            annee = $('#annee').val()
+            etat = $('#etat').val()
+            chauffage = $('#chauffage').val()
+            energy = $('#energy').val()
+            charge = $('#charge').val()
+
+            if(type == "appart" && (etage == "" || n_etage == "")){
+              
+                $('.err_etage').show()
+              
+            }
+            else{
+                
+                if(surface != "" && n_piece != "" && n_chambre != "" && n_bain != "" 
+                && annee != "" && etat != "" && chauffage != "" && energy != "" && charge != ""){
+                    $('#'+hide).hide()
+                    $('#'+show).show()
+                    $('#step2').toggleClass('lighten')
+                }
+
+                else{
+                    $('.errchamp').show()
+                    setTimeout(() => {
+                        $('.errchamp').hide()
+                    }, 3000);
+                }
+                
+            }
+            
+
+        }
+        else if(hide == "interface2"){
+            if(show == "interface3"){
+                carac = {
+                    "jardin":$('input[name="jardin"]:checked').val(),
+                    "parking":$('input[name="parking"]:checked').val(),
+                    "terrasse":$('input[name="terrasse"]:checked').val(),
+                    "piscine":$('input[name="piscine"]:checked').val(),
+                    "cave":$('input[name="cave"]:checked').val(),
+                    "balcon":$('input[name="balcon"]:checked').val(),
+                }
+                description = $('#description').val()
+                console.log(carac)
+
+                if($("#description").val().length < 100 || $('#vue').val() == ""){
+                    $('.err_desc').show()
+                }
+
+                else{
+                    $('#'+hide).hide()
+                    $('#'+show).show()
+                    $('#step3').removeClass('lighten')
+                }
+            }
+            else{
+                $('#'+hide).hide()
+                $('#'+show).show()
+                $('#step2').addClass('lighten')
+            }
+            
+        }
+
+        else if(hide == "interface3"){
+            
+            $('#step3').addClass('lighten')
+            $('#'+hide).hide()
+            $('#'+show).show()
+            
+        }
+         
+    }
+
+
+
+    // $('.validatebtn').on('click', function(e){
+    //     e.preventDefault()
+    //     console.log("sending..")
+    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    document.getElementById('file').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const maxFiles = 5;
+            const photoPreview = document.getElementById('photoPreview');
+
+            // Effacer l'aperçu précédent
+            photoPreview.innerHTML = '';
+
+            if (files.length > maxFiles) {
+                alert(`Vous ne pouvez charger que ${maxFiles} photos. Veuillez en sélectionner ${maxFiles} ou moins.`);
+                event.target.value = ''; // Réinitialiser l'input
+                return;
+            }
+
+            // Parcourir les fichiers et les afficher
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                // Vérifier si le fichier est une image
+                if (!file.type.startsWith('image/')) {
+                    alert('Seules les images sont autorisées.');
+                    continue;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    photoPreview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+
+
+
+
+
+
+
+        $('.validatebtn').on("click", (e)=>{
+            $('.validatebtn').addClass('lighten').text('validation en cours...')
+            const files = $('#file')[0].files;
+            const _location = $('#location').val()
+
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('photos', files[i]); // Nom 'photos' doit correspondre au nom dans multer.array()
+            }
+
+            formData.append('location', _location);
+            // type, etage, n_etage, surface, n_piece, n_chambre, n_bain, annee, etat,
+            // chauffage, energy, charge, carac;
+
+            formData.append('type', type)
+            formData.append('etage', etage)
+            formData.append('n_etage', n_etage)
+            formData.append('surface', surface)
+            formData.append('n_piece', n_piece)
+            formData.append('n_chambre', n_chambre)
+            formData.append('n_bain', n_bain)
+            formData.append('annee', annee)
+            formData.append('etat', etat)
+            formData.append('chauffage', chauffage)
+            formData.append('energy', energy)
+            formData.append('charge', charge)
+            formData.append('carac', JSON.stringify(carac))
+            formData.append('description', description)
+            // Remplacer fetch par jQuery AJAX
+            console.log(_location, files)
+
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // Ne pas traiter les données
+                contentType: false,  // Ne pas définir de Content-Type, le navigateur le fait automatiquement
+                success: function(response) {
+                    // alert(response);
+                    $('.validatebtn').removeClass('lighten').text('valider').off()
+                    $('.btn_interface').off()
+                    $('.success').show()
+                    setTimeout(() => {
+                        window.location.href="/compte/property"
+                    }, 5000);
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Erreur lors de l\'upload:', textStatus, errorThrown);
+                }
+            });
+        })
+        
+        
+</script>

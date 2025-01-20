@@ -1,0 +1,53 @@
+
+<div id="compte">
+    <div id="nav-user">
+        <h2>Bienvenue</h2>
+        <a href="/compte" class="user-currenta">
+            <i class="fa-solid fa-user"></i>
+            <span class="txt">Compte</span>
+        </a>
+        <a href="/compte/property">
+            <i class="fa-solid fa-house"></i>
+            <span class="txt">Mes biens</span>
+        </a>
+        <a href="/compte/ajout">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="txt">Ajouter un bien</span>
+        </a>
+        <a href="/compte/documents" style="position: relative;">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="txt">Documents</span>
+            
+        </a>
+        <a href="/compte/messages" style="position: relative;">
+            <i class="fa-solid fa-comments"></i>
+            <span class="txt">Messages</span>
+            <span class="not-msg"></span>
+        </a>
+        <a href="/compte/demandes" style="position: relative;">
+            <i class="fa-solid fa-bell"></i>
+            <span class="txt">Demandes reçues</span>
+            <span class="not-msg" style="left: 90%;"></span>
+        </a>
+    </div>
+
+    <div id="content-user">
+        <% if(!complete){ %>
+            <div class="filldoc">
+                <p><strong>Rappel:</strong> Rendez-vous à la section <a href="/compte/documents">documents</a>, pour compléter votre inscription</p>
+            </div>
+        <% } %>
+        <h2 class="title"> <i class="fa-solid fa-circle-user" style="margin-right: 20px;"></i>Mon Compte</h2>
+        
+       
+        <div class="info-compte">
+            <p><strong>Nom</strong>--------</p>
+            <p><strong>Prénom</strong>--------</p>
+            <p><strong>Email</strong><%= email  %></p>
+            <p><strong>Mes Biens</strong>0</p>
+            <p><strong>Demandes non lus</strong>0</p>
+            <p><strong>Messages non lus</strong>0</p>
+        </div>
+        
+    </div>
+</div>

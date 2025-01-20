@@ -1,0 +1,49 @@
+
+
+<div class="property-detail">
+    <h1 class="title">Détail</h1>
+    <div style="color:white">
+        <p><%= obj.location %>.</p>
+    </div>
+    <p>.</p>
+    
+
+    <div class="container-img-detail">
+        <main>
+            <img style="max-width: 500px;" src="/<%= obj.imgs[0].slice(7, ) %>" alt="">
+        </main>
+        <section class="other">
+
+            <% obj.imgs.forEach((img)=>{ %>
+                <a data-fancybox="gallery" href="/<%= img.slice(7, ) %>">
+                    <img src="/<%= img.slice(7, )  %>" alt="">
+                </a>
+            <% }) %>
+
+        </section>
+    </div>
+
+    <div class="info" style="display: block;">
+        <h3>Adresse, <%= obj.location %>.</h3>
+        
+        <h3>Description:</h3>
+        <p class="desc"><%= obj.description %></p>
+
+        <h3>Propriétaire:</h3>
+
+        <p class="prop">Nom et prénom du Propriétaire</p>
+    </div>
+
+
+
+
+  
+
+
+    <% if(_id != "false" && _id != obj._id){ %>
+
+        <a class="echangebtn" href="/exchange?id=<%= obj._id %>">Faire un échange !</a>
+    <% }  %>
+
+
+</div>

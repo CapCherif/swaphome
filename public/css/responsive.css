@@ -1,0 +1,151 @@
+
+
+@media screen and (max-width: 800px) {
+    
+
+    body{
+        font-size: 16px;
+    }
+    #burger {
+        display: block;
+    }
+    #burger div{
+        border-radius: 3px;
+    }
+
+    #links{
+        display: none;
+    }
+
+    #searchbien > *{
+        text-align: center;
+    }
+    #searchbien form select{
+        padding: 8px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid lightgray;
+        width: 300px;
+    }
+
+    .property-item, .property-item-small{
+        width: 180px;
+        /* margin-right: 10px;
+        margin-top: 10px; */
+        background-color: white;
+        font-size: 12px;
+    }
+    
+    .cont-img{
+        height: 120px;
+    }
+    .property-item img, .property-item-small img{
+        width: 180px;
+    }
+    section h2{
+        text-align: center;
+    }
+    .property-list{
+        justify-content: center;
+    }
+
+    .service-item{
+        width: 200px;
+        margin: 5px;
+    }
+    .service-item i{
+        font-size: 30px;
+    }
+    .services-grid{
+        justify-content: center;
+    }
+
+    #une img {
+        display: block;
+        margin: auto;
+    }
+    #une > div > div {
+        margin: 20px auto;
+        text-align: center;
+
+    }
+
+    #contact > form{
+        display: inline;
+        width: 100%;
+    }
+
+    #contact input{
+        width: 90%;
+    }
+    #contact textarea{
+        width: 90%;
+        display: inline-block;
+    }
+
+    .container-property form{
+        width: 100%;
+    }
+
+    #res-property{
+        margin-top: 20px;
+    }
+
+    .signup_form input{
+        width: 100%;
+        display: block;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid lightgray;
+    }
+
+    #nav-user {
+        width: 50px;
+        text-align: center;
+    }
+    #nav-user i{
+        font-size: 20px;
+    }
+    #nav-user h2{
+        display: none;
+    }
+    #nav-user a .txt{
+        display: none;
+    }
+
+    /* .not-msg{
+        left:50px !important;
+    } */
+
+    #compte{
+        font-size: 14px;
+    }
+
+    .form_user input, .form_user select, .form_user textarea{
+        width: 90%;
+    }
+    
+    .swapp{
+        margin: 20px auto;
+    }
+
+    #bann > *{
+        margin:5px auto;
+        text-align: center;
+    }
+
+    
+}
+
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+
+    #links a{
+        font-size: 12px;
+    }
+
+}

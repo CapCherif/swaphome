@@ -1,0 +1,49 @@
+
+
+<div id="nav-container">
+    <nav>
+        <a href="">
+            <img src="/imgs/logo1.png" alt="">
+        </a>
+        <div id="links">
+            <a href="/accueil" class="<%= page=="home" ? "current" : "" %>">Calculateur</a>
+            <a href="/services" class="<%= page=="services" ? "current" : "" %>">L'échange immobilier</a>
+            <a href="/property" class="<%= page=="property" ? "current" : "" %>">Propriétés</a>
+            <% if(login){ %>
+                <a href="/compte" class="<%= page=="compte" ? "current" : "" %>">
+
+                    Mon compte
+                </a>
+                <a href="/logout">Déconnecter</a>
+            <% }else{ %>
+                <a href="/signup" id="signup_a" class="<%= page=="signup" ? "current" : "" %>">S'inscrire</a>
+                <a href="/signin" id="signin_a">Se Connecter</a>
+            <% } %>
+        </div>
+
+        <div id="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+
+    <div id="_links">
+        <a href="/accueil" class="<%= page=="home" ? "current" : "" %>">Calculateur</a>
+        <a href="/services" class="<%= page=="services" ? "current" : "" %>">L'échange immobilier</a>
+        <a href="/property" class="<%= page=="property" ? "current" : "" %>">Emprunter</a>
+        <% if(login){ %>
+            <a href="/compte" class="<%= page=="compte" ? "current" : "" %>">
+
+                Mon compte
+            </a>
+            <a href="/logout">Déconnecter</a>
+        <% }else{ %>
+            <a href="/signup" id="signup_a" class="<%= page=="signup" ? "current" : "" %>">S'inscrire</a>
+            <a href="/signin" id="signin_a">Se Connecter</a>
+        <% } %>
+    </div>
+
+</div>
+
