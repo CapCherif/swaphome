@@ -28,6 +28,20 @@
         width: 300px;
     }
 
+    #biens{
+        justify-content: center;
+    }
+    .bien{
+        margin: 20px auto;
+    }
+    #bann .qs {
+        display: block;
+    }
+    #bann img{
+        width: 300px;
+        display: block;
+        margin: 10px auto;
+    }
     .property-item, .property-item-small{
         width: 180px;
         /* margin-right: 10px;
@@ -134,7 +148,33 @@
         text-align: center;
     }
 
+
+    #calculator input{
+        width: 80%;
+        display: block;
+        margin: 10px auto;
+        border-radius: 50px;
+        border: 1px solid lightblue;
+    }
+    #calculator .flex{
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    #calculator .flex  *{
+        /* width: 100%; */
+        max-width: 100%;
+    }
     
+    .marcher{
+        width: 90%;
+        margin: 10px auto;
+        text-align: center;
+        
+    }
+    .marchers{
+        display: block;
+    }
 }
 
 

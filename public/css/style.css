@@ -1,6 +1,6 @@
 
 :root {
-    --main-bg-color: rgb(42, 20, 65);
+    --main-bg-color: rgb(28, 12, 46);
     --dark-color:rgb(34, 9, 56);
     --light-color:rgb(127, 88, 162);
     --ulight-color:rgb(181, 146, 212);
@@ -73,6 +73,11 @@ nav #links a{
     
 }
 
+#bann .qs {
+    /* display: none; */
+    text-align: center;
+    color: blueviolet;
+}
 #burger{
     width: 25px;
     cursor: pointer;
@@ -91,6 +96,13 @@ nav #links a{
     background-color: rgb(224, 227, 234);
     border-radius: 1px;
     margin: 3px 0px;
+}
+
+#bann select{
+    border-radius: 50px;
+    border: 1px solid lightblue;
+    padding: 10px;
+    width: 250px;
 }
 
 #_links{
@@ -138,12 +150,12 @@ nav #links a{
 }
 
 
-#bann select{
+/* #bann select{
     width: 300px;
     padding: 8px;
     border-radius: 4px;
     border: 1px solid lightgray;
-}
+} */
 
 #bann button{
     padding: 8px;
@@ -241,8 +253,12 @@ nav #links a{
 }
 .bien{
     width: 280px;
-    background-color: var(--dark-color);
+    /* background-color: var(--dark-color); */
+    background-color: rgb(249, 245, 251);
     margin: 10px 0px;
+    color: black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .bien-img-container img{
     width: 280px;
@@ -295,6 +311,11 @@ nav #links a{
     color: white;
     margin: 5px;
     max-width: 300px;
+}
+
+b{
+    border: 3px solid rgb(228, 191, 244);
+    margin-left: 8px;
 }
 
 #calculator input{
