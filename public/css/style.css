@@ -289,26 +289,38 @@ nav #links a{
 #calculator {
     max-width: 1000px;
     margin: 80px auto;
-    padding: 20px;
-    background-color: var(--dark-color);
+    padding: 50px 30px;
+    /* background-color: var(--dark-color); */
     border-radius: 15px;
+    background-color: rgb(234, 217, 253);
 }
 
 #calculator h2{
-    color:white;
+    color:rgb(36, 36, 36);
     text-align: center;
     font-size: 35px;
-
+    margin: 5px 0px;
+    font-weight: bold;
+    font-style: italic;
 }
 
+#economie-1, #economie-2{
+    font-size: 40px;
+    font-weight: bold;
+    background-color: rgb(96, 36, 148);
+    color: white !important;
+    border-radius: 50px;
+    text-align: center;
+    margin: 10px 0px !important;
+}
 
 #calculator h3{
-    color: white;
+    color: rgb(36, 36, 36);
     
 }
 
 #calculator p{
-    color: white;
+    color: rgb(15, 15, 15);
     margin: 5px;
     max-width: 300px;
 }
@@ -320,10 +332,10 @@ b{
 
 #calculator input{
     width: 300px;
-    padding: 5px;
+    padding: 10px;
     margin: 20px 0px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
+    border-radius: 50px;
+    border: 3px solid rgba(199, 127, 241, 0.801);
     font-size: 20px;
 }
 
@@ -1428,4 +1440,34 @@ hr{
     padding: 15px;
     border-radius: 10px;
     border: 1px solid rgb(0, 94, 255);
+}
+
+
+footer {
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: 30px;
+}
+
+footer  *{
+    color: rgb(14, 0, 37) !important;
+
+}
+
+footer section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+footer section div{
+    max-width: 350px;
+    margin: 10px;
+}
+
+footer i{
+    font-size: 30px;
+    margin: 0px 10px;
 }
